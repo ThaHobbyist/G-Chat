@@ -8,18 +8,18 @@
 <script>
 import firebase from 'firebase'
 import Dashboard from './components/Dashboard.vue'
-import Home from './views/Home.vue'
+
 export default {
     data() {
         return {
             user: [],
+            users: Boolean,
             si: false,
             db: firebase.firestore()
         }
     },
     components: {
-        Dashboard, 
-        Home,
+        Dashboard
     },
     mounted() {
         firebase.auth().onAuthStateChanged((user) => {
@@ -34,7 +34,6 @@ export default {
                 .catch(console.log).then(
                     () => {
                     let user = firebase.auth().currentUser
-                    localStorage.setItem("user", user)
                     this.db.collection('users').where("email", "==", user.email).get().then((querySnapshot) => {
                         querySnapshot.forEach((doc) => {
                             this.users = doc.data() == null ? true : false
@@ -62,6 +61,15 @@ export default {
                     console.log(error.message)
 					console.log("error")
                 })
+        },
+        async updateUser() {
+            let user = firebase.auth().currentUser
+            await this.db.collection('users').add({
+                'userUID': user.uid,
+                'displayName': user.displayName,
+                'photoURL': user.photoURL,
+                'email': user.email
+            }).then(console.log("entry done"))
         },
     }
 }

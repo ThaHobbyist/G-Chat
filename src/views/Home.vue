@@ -91,7 +91,7 @@ export default {
 
 .box {
     width: 40vw;
-    height: 45vh;
+    height: auto;
     margin: auto;
     margin-top: 20vh;
     border: 5px solid black;

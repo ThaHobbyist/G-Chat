@@ -12,8 +12,8 @@
 			</li>
 		</ul>
 		<ul v-else>
-			<li v-for="usr in searchResult" :key="usr" @click="openChat(usr)">
-				<a>{{ usr }} </a>
+			<li v-for="usr in searchResult" :key="usr.displayName" @click="openChat(usr)">
+				<a>{{ usr.displayName }} </a>
 			</li>
 		</ul>
 	</aside>
@@ -141,6 +141,7 @@ import firebase from 'firebase'
         	console.log(user.email)
 			this.show = true
 			this.toggleActive()
+			this.searchText = ""
         },
         print(user) {
           console.log(user)
@@ -160,7 +161,7 @@ import firebase from 'firebase'
 			this.searchResult = []
 			this.users.map((usr) => {
 				if (usr.displayName.toLowerCase().includes(this.searchText.trim()) ){
-					this.searchResult.push(usr.displayName)
+					this.searchResult.push(usr)
 					
 				}
 				
@@ -282,6 +283,7 @@ aside li{
 	padding:10px 10px;
 	font-family: Boogaloo, cursive;
 	font-size: 25px;
+	cursor: pointer;
 }
 aside li:hover{
 	background-color:#5e616a;
@@ -521,10 +523,6 @@ main footer img{
 
 	.close{
 		width: 0vw;
-	}
-
-	.closed {
-
 	}
 
     .hidden {
