@@ -10,7 +10,7 @@
                 <a @click="logout" >LOGOUT</a>
             </li>
             <li v-else class="nav-item">
-                <a @click="loginGoogle">LOGIN</a>
+                <a @click="$emit('login')">LOGIN</a>
             </li>
         </ul>
     </div>
@@ -19,6 +19,7 @@
 
 <script>
 import firebase from 'firebase'
+
 
 
 export default {
@@ -30,6 +31,7 @@ export default {
           users: Boolean,
         }
     },
+    emits: ['login'],
     methods: {
         logout() {
             firebase.auth().signOut().then(

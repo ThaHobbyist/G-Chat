@@ -2,7 +2,7 @@
 <template>
     
 <div class="container" id="container">
-	<aside v-if="open">
+	<aside :class=" { close: open } ">
 		<header>
 			<input type="text" id="mySearch" @change="search" @keyup="search" v-model="searchText" placeholder="search">
 		</header>
@@ -17,9 +17,9 @@
 			</li>
 		</ul>
 	</aside>
-	<main v-if="show">
+	<main v-if="show" :class=" { closed: open } ">
 		<header >
-			<button @click="toggle" >Toggle</button>
+			<button class="toggle" @click="toggle"  >Toggle</button>
 			<img :src = s_usr.photoURL  alt="">
 			<div class="heading">
 				<h2>Chat with {{ s_usr.displayName }}</h2>
@@ -46,10 +46,10 @@
 		</footer>
 		<div ref="scrollable"></div>
 	</main>
-	<main class="text" v-else>
+	<main class="text" v-else :class=" { closed: open } ">
 		<header>
-			<button @click="toggle">Toggle</button>
-			<button @click="logout">logout</button>
+			<button class="toggle" @click="toggle">Toggle</button>
+			<button @click="$emit('logout')">logout</button>
 		</header>
 		<h2>Select an User to chat with!</h2>
 	</main>
@@ -73,9 +73,11 @@ import firebase from 'firebase'
             })	
 		console.log(this.user)
     },
+	props: {
+		user: Object,
+	},
     data() {
         return {
-          user: localStorage.getItem("user"),
           db: firebase.firestore(),
           message: '',
           messages: [],
@@ -160,6 +162,10 @@ import firebase from 'firebase'
     box-sizing: border-box;
 }
 
+.toggle{
+	display:none;
+}
+
 form.example input[type=text] {
   padding: 10px;
   font-size: 17px;
@@ -203,7 +209,7 @@ body{
 }
 #container{
 	width:100%;
-	height:100%;
+	height:97vh;
 	background:rgba(224, 224, 224, 0.808);
 	margin:0 auto;
 	font-size:0;
@@ -219,6 +225,7 @@ aside{
 	font-size:15px;
 	vertical-align:top;
 	overflow: hidden;
+	transition: all 499ms ease;
 }
 main{
 	width:80%;
@@ -331,14 +338,13 @@ main header button {
 
 }
 
+
+
 main header{
 	height:110px;
 	padding:30px 20px 30px 40px;
 }
-main header > *{
-	display:inline-block;
-	vertical-align:top;
-}
+
 main header img:first-child{
 	border-radius:50%;
 	width: 50px;
@@ -463,11 +469,41 @@ main footer img{
 	padding: 0;
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 700px) {
+.toggle{
+	display: block;
+	float: right;
+}
+
+header{
+	display:inline-block;
+	width: 100%;
+}
 #container {
     margin: auto;
     height: 97.5vh;
 	vertical-align: middle;
+	position: relative;
+}
+
+aside {
+	width: 80%;
+	z-index: 1;
+}
+
+main{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.close{
+	width: 0vw;
+}
+
+.closed {
+
 }
 }
 
