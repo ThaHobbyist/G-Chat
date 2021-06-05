@@ -12,8 +12,8 @@
 			</li>
 		</ul>
 		<ul v-else>
-			<li v-for="usr in searchResult" :key="usr.displayName" @click="openChat(usr)">
-				<a>{{ usr.displayName }} </a>
+			<li v-for="usr in searchResult" :key="usr" @click="openChat(usr)">
+				<a>{{ usr }} </a>
 			</li>
 		</ul>
 	</aside>
@@ -157,11 +157,11 @@ import firebase from 'firebase'
         },
 		search() {
 			console.log(this.searchText)
+			this.searchResult = []
 			this.users.map((usr) => {
-				if (usr.displayName.toLowerCase().includes(this.searchText) ){
-					this.searchT = true
-					this.searchResult = []
-					this.searchResult.push(usr)
+				if (usr.displayName.toLowerCase().includes(this.searchText.trim()) ){
+					this.searchResult.push(usr.displayName)
+					
 				}
 				
 			})
@@ -274,9 +274,9 @@ aside input::placeholder{
 aside ul{
 	padding-left:0;
 	margin:0;
+	height: 83%;
 	list-style-type:none;
 	overflow-y:scroll;
-	height:690px;
 }
 aside li{
 	padding:10px 10px;
@@ -339,6 +339,8 @@ aside li h3{
 
 main #chat{
 	background-image: url("../assets/chat_1.png");
+	height: 65vh;
+
 }
 
 main header button {
@@ -447,7 +449,7 @@ main header h3{
 
 main footer{
 	height:155px;
-	padding:20px 30px 10px 20px;
+	padding: 20px;
 }
 main footer input{
 	resize:none;
@@ -455,7 +457,7 @@ main footer input{
 	display:block;
 	width:90%;
 	float: left;
-	height:80px;
+	height:55px;
 	border-radius:3px;
 	padding:20px;
 	font-size:18px;
