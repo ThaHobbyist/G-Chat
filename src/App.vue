@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-    <Home v-if="!si" @login="loginGoogle" />
+    <router-view v-if="!si" @login="loginGoogle" />
     <Dashboard v-if="si" :user="user" @logout="logout"/>
 </div>
 </template>

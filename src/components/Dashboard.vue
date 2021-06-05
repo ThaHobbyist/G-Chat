@@ -17,14 +17,20 @@
 			</li>
 		</ul>
 	</aside>
-	<main v-if="show" :class=" { closed: open } ">
+	<main v-if="show" :class=" { closed: !open } ">
 		<header >
-			<button class="toggle" @click="toggle"  >Toggle</button>
+			<div id="burger" :class="{ 'active' : active}" @click="toggleActive">
+        		<button type="button" class="burger-button" title="Menu">
+            		<span class="burger-bar burger-bar--1"></span>
+            		<span class="burger-bar burger-bar--2"></span>
+            		<span class="burger-bar burger-bar--3"></span>
+        		</button>
+    		</div>
 			<img :src = s_usr.photoURL  alt="">
 			<div class="heading">
 				<h2>Chat with {{ s_usr.displayName }}</h2>
 			</div>
-			<button @click="logout">logout</button>
+			<button class="logout" @click="logout">logout</button>
 		</header>
 		<div class="messages" >
 			<ul id="chat">
@@ -46,10 +52,16 @@
 		</footer>
 		<div ref="scrollable"></div>
 	</main>
-	<main class="text" v-else :class=" { closed: open } ">
+	<main class="text" v-else :class=" { closed: !open } ">
 		<header>
-			<button class="toggle" @click="toggle">Toggle</button>
-			<button @click="$emit('logout')">logout</button>
+			<div id="burger" :class="{ 'active' : active}" @click="toggleActive">
+        		<button type="button" class="burger-button" title="Menu">
+            		<span class="burger-bar burger-bar--1"></span>
+            		<span class="burger-bar burger-bar--2"></span>
+            		<span class="burger-bar burger-bar--3"></span>
+        		</button>
+    		</div>
+			<button class="logout" @click="$emit('logout')">logout</button>
 		</header>
 		<h2>Select an User to chat with!</h2>
 	</main>
@@ -88,10 +100,12 @@ import firebase from 'firebase'
 		  searchText: "",
 		  show: false,
 		  open: true,
+		  active: false,
         }
     },
     methods: {
-		toggle(){
+		toggleActive() {
+			this.active = !this.active
 			this.open = !this.open
 		},
         async sendMessage() {
@@ -126,6 +140,7 @@ import firebase from 'firebase'
           	this.s_usr = user
         	console.log(user.email)
 			this.show = true
+			this.toggleActive()
         },
         print(user) {
           console.log(user)
@@ -325,6 +340,7 @@ aside li h3{
 main #chat{
 	background-image: url("../assets/chat_1.png");
 }
+
 main header button {
 	font-family: 'Overlock SC', cursive;
 	float: right;
@@ -345,9 +361,10 @@ main header{
 	padding:30px 20px 30px 40px;
 }
 
-main header img:first-child{
+main header img{
 	border-radius:50%;
 	width: 50px;
+	float: left;
 	vertical-align: middle;
 }
 main header img:last-child{
@@ -469,42 +486,177 @@ main footer img{
 	padding: 0;
 }
 
+.burger-button{
+	display:none;
+}
+
 @media screen and (max-width: 700px) {
-.toggle{
-	display: block;
-	float: right;
-}
 
-header{
-	display:inline-block;
-	width: 100%;
-}
-#container {
-    margin: auto;
-    height: 97.5vh;
-	vertical-align: middle;
-	position: relative;
-}
+	header{
+		width: 100%;
+	}
+	#container {
+		margin: auto;
+		height: 97.5vh;
+		vertical-align: middle;
+		position: relative;
+	}
 
-aside {
-	width: 80%;
-	z-index: 1;
-}
+	aside {
+		position: relative;
+		width: 80%;
+		z-index: 99;
+		opacity: 1;
+	}
 
-main{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-}
+	main{
+		position: absolute;
+		top: 0;
+		left: 0;
+		
+		width: 100%;
+	}
 
-.close{
-	width: 0vw;
-}
+	.close{
+		width: 0vw;
+	}
 
-.closed {
+	.closed {
 
-}
+	}
+
+    .hidden {
+        visibility: hidden;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    /* remove blue outline */
+    button:focus {
+        outline: 0;
+    }
+
+	#burger{
+		display: block;
+		float: right;
+		margin-right: 0;
+	}
+
+    .burger-button {
+        position: relative;
+        height: 30px;
+        width: 40px;
+		margin-top: 8px;
+        display: block;
+        z-index: 99;
+        border: 0;
+        border-radius: 0;
+        background-color: transparent;
+        pointer-events: all;
+        transition: transform .6s cubic-bezier(.165, .84, .44, 1);
+    }
+
+    .burger-bar {
+        background-color: #444;
+        position: absolute;
+        top: 50%;
+        right: 6px;
+        left: 6px;
+        height: 3px;
+        width: auto;
+        margin-top: -1px;
+        transition: transform .6s cubic-bezier(.165, .84, .44, 1), opacity .3s cubic-bezier(.165, .84, .44, 1), background-color .6s cubic-bezier(.165, .84, .44, 1);
+    }
+
+    .burger-bar--1 {
+        -webkit-transform: translateY(-6px);
+        transform: translateY(-6px);
+        top: 40%;
+    }
+
+    .burger-bar--2 {
+        transform-origin: 100% 50%;
+        transform: scaleX(1);
+    }
+
+    .burger-button:hover .burger-bar--2 {
+        transform: scaleX(1);
+    }
+
+    .no-touchevents .burger-bar--2:hover {
+        transform: scaleX(1);
+    }
+
+    .burger-bar--3 {
+        transform: translateY(6px);
+        top: 60%;
+    }
+
+    #burger.active .burger-button {
+        transform: rotate(-180deg);
+    }
+
+    #burger.active .burger-bar {
+        background-color: lighten(#2b2b68, 10);
+    }
+
+    #burger.active .burger-bar--1 {
+        transform: rotate(45deg);
+        top: 50%;
+    }
+
+    #burger.active .burger-bar--2 {
+        opacity: 0;
+    }
+
+    #burger.active .burger-bar--3 {
+        transform: rotate(-45deg);
+        top: 50%;
+    }
+
+	main .messages {
+		width: 100%;
+	}
+
+	main header{
+		padding: 10px;
+	}
+
+	main header img {
+		margin: 5px;
+	}
+	main header .heading{
+		text-align: center;
+		margin: 0;
+	}
+
+	main .logout{
+		float: bottom;
+	}
+
+	main .messages{
+		height: 65%;
+	}
+
+	main #chat{
+		height: 100%;
+	}
+
+	main footer input{
+		width: 80%;
+		height: 60px;
+	}
+
+	main .messages h3{
+		margin: 0;
+		line-height: normal;
+	}
+
+	#chat .message {
+		padding: 8px 20px;
+	}
 }
 
 </style>

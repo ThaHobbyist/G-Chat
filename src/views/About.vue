@@ -13,7 +13,7 @@
 <style scoped>
 .about {
   width: 40vw;
-  height: 45vh;
+  height: auto;
   margin: auto;
   margin-top: 20vh;
   border: 5px solid black;
@@ -57,15 +57,15 @@ a:hover{
 }
 
 @media screen and (max-width: 540px) {
-.about {
-    margin: auto;
-    width: 70vw;
-    margin-top: 20vh;
-    height: auto;
-}
+  .about {
+      margin: auto;
+      width: 70vw;
+      margin-top: 20vh;
+      height: auto;
+  }
 
-h4{
-  padding: 4px;
-}
+  h4{
+    padding: 4px;
+  }
 }
 </style>
