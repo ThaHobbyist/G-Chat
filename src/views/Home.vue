@@ -7,7 +7,7 @@
                 <router-link to="/about">ABOUT</router-link>
             </li>
             <li v-if="user" class="nav-item">
-                <a @click="logout" >LOGOUT</a>
+                <a @click="$emit('logout')" >LOGOUT</a>
             </li>
             <li v-else class="nav-item">
                 <a @click="$emit('login')">LOGIN</a>
@@ -20,69 +20,9 @@
 <script>
 import firebase from 'firebase'
 
-
-
 export default {
     name: 'App',
-    data() {
-        return {
-          user: firebase.auth().currentUser? true : false,
-          db: firebase.firestore(),
-          users: Boolean,
-        }
-    },
     emits: ['login'],
-    methods: {
-        logout() {
-            firebase.auth().signOut().then(
-                () => {
-                    
-                    this.$router.replace('/')
-                    
-                }).catch((error) => {
-                    let errorResponse = JSON.parse(error.message)
-                    console.log(errorResponse)
-                })
-        },
-        loginGoogle() {
-            const provider = new firebase.auth.GoogleAuthProvider()
-            firebase.auth().signInWithPopup(provider)
-                .catch(console.log).then(
-                    () => {    
-                    
-                    
-                    let user = firebase.auth().currentUser
-                    localStorage.setItem("user", user)
-                    this.db.collection('users').where("email", "==", user.email).get().then((querySnapshot) => {
-                        querySnapshot.forEach((doc) => {
-                            this.users = doc.data() == null ? true : false
-                        })
-                    
-                    }).then(() => {
-                        if (this.users) {
-                            this.updateUser()
-                        }
-                    })
-                    this.$router.replace('dashboard')
-
-                    },
-                    (error) => {
-                        console.log(error.code)
-                        console.log(error.message)
-                    
-                })
-        },
-        async updateUser() {
-            let user = firebase.auth().currentUser
-            await this.db.collection('users').add({
-                'userUID': user.uid,
-                'displayName': user.displayName,
-                'photoURL': user.photoURL,
-                'email': user.email
-            }).then(console.log("entry done"))
-        }
-        
-    },
     
 }
 </script>

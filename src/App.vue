@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-    <router-view v-if="!si" @login="loginGoogle" />
+    <Home v-if="!si" @login="loginGoogle" />
     <Dashboard v-if="si" :user="user" @logout="logout"/>
 </div>
 </template>
@@ -8,6 +8,7 @@
 <script>
 import firebase from 'firebase'
 import Dashboard from './components/Dashboard.vue'
+import Home from './views/Home.vue'
 
 export default {
     data() {
@@ -19,7 +20,8 @@ export default {
         }
     },
     components: {
-        Dashboard
+        Dashboard,
+        Home
     },
     mounted() {
         firebase.auth().onAuthStateChanged((user) => {

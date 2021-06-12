@@ -28,7 +28,7 @@
     		</div>
 			<img :src = s_usr.photoURL  alt="">
 			<div class="heading">
-				<h2>Chat with {{ s_usr.displayName }}</h2>
+				<h2>{{ s_usr.displayName }}</h2>
 			</div>
 			<button class="logout" @click="logout">logout</button>
 		</header>
@@ -339,10 +339,10 @@ aside li h3{
 	vertical-align: middle;
 }
 
-main #chat{
+main .messages {
+	height: 74%;
 	background-image: url("../assets/chat_1.png");
-	height: 65vh;
-
+	background-repeat:round;
 }
 
 main header button {
@@ -357,8 +357,6 @@ main header button {
 	vertical-align: center;
 
 }
-
-
 
 main header{
 	height:110px;
@@ -382,8 +380,10 @@ main header div{
 }
 main header h2{
 	font-family: Rowdies, cursive;
-	font-size:16px;
-	margin-bottom:5px;
+	font-size:30px;
+	margin:5px;
+	vertical-align: middle;
+	text-align: center;
 }
 main header h3{
 	font-size:14px;
@@ -405,7 +405,7 @@ main header h3{
 	margin:0;
 	list-style-type:none;
 	overflow-y:scroll;
-	height:535px;
+	height: 100%;
 	border-top:2px solid #fff;
 	border-bottom:2px solid #fff;
 }
@@ -622,6 +622,10 @@ main footer img{
 
 	main header{
 		padding: 10px;
+	}
+
+	main header h2{
+		font-size: 20px;
 	}
 
 	main header img {
