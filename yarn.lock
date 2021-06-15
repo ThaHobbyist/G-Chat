@@ -910,15 +910,15 @@
     "@babel/helper-validator-identifier" "^7.14.0"
     "to-fast-properties" "^2.0.0"
 
-"@eslint/eslintrc@^0.4.1":
-  "integrity" "sha512-5v7TDE9plVhvxQeWLXDTvFvJBdH6pEsdnl2g/dAptmuFEPedQ4Erq5rsDsX+mvAM610IhNaO2W5V1dOOnDKxkQ=="
-  "resolved" "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-0.4.1.tgz"
-  "version" "0.4.1"
+"@eslint/eslintrc@^0.4.2":
+  "integrity" "sha512-8nmGq/4ycLpIwzvhI4tNDmQztZ8sp+hI7cyG8i1nQDhkAbRzHpXPidRAHlNvCZQpJTKw5ItIpMw9RSToGF00mg=="
+  "resolved" "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-0.4.2.tgz"
+  "version" "0.4.2"
   dependencies:
     "ajv" "^6.12.4"
     "debug" "^4.1.1"
     "espree" "^7.3.0"
-    "globals" "^12.1.0"
+    "globals" "^13.9.0"
     "ignore" "^4.0.6"
     "import-fresh" "^3.2.1"
     "js-yaml" "^3.13.1"
@@ -930,14 +930,14 @@
   "resolved" "https://registry.npmjs.org/@firebase/analytics-types/-/analytics-types-0.4.0.tgz"
   "version" "0.4.0"
 
-"@firebase/analytics@0.6.10":
-  "integrity" "sha512-dLOAfeHYKkt1mhFNzrST6X0W5Og/VKhH7VP03YlUwz1STKtPve/KV32IynjMEBgnI6DC1NIAX3V0jYK6KBum4A=="
-  "resolved" "https://registry.npmjs.org/@firebase/analytics/-/analytics-0.6.10.tgz"
-  "version" "0.6.10"
+"@firebase/analytics@0.6.11":
+  "integrity" "sha512-I4rHkJ2jVFIXfcXCRjVrJLwOoM0Kk3asRrvaqRoL3a14CjAdCncHvhQ6wSrfzFAeFMrH1t6UJP1sxRqHOZ5TGA=="
+  "resolved" "https://registry.npmjs.org/@firebase/analytics/-/analytics-0.6.11.tgz"
+  "version" "0.6.11"
   dependencies:
     "@firebase/analytics-types" "0.4.0"
-    "@firebase/component" "0.5.0"
-    "@firebase/installations" "0.4.26"
+    "@firebase/component" "0.5.1"
+    "@firebase/installations" "0.4.27"
     "@firebase/logger" "0.2.6"
     "@firebase/util" "1.1.0"
     "tslib" "^2.1.0"
@@ -952,14 +952,14 @@
   "resolved" "https://registry.npmjs.org/@firebase/app-check-types/-/app-check-types-0.1.0.tgz"
   "version" "0.1.0"
 
-"@firebase/app-check@0.1.1":
-  "integrity" "sha512-nBNiyhbCBpaVfVNjwGor+f0LZkn5kf1QRdMPbRyZUJG6BjTByMhNmbezEaCWNO0MNBhsNqYqiXUivHJU4A3+2Q=="
-  "resolved" "https://registry.npmjs.org/@firebase/app-check/-/app-check-0.1.1.tgz"
-  "version" "0.1.1"
+"@firebase/app-check@0.1.2":
+  "integrity" "sha512-7DPXys2aWyuBHFBNkO6JKip9FjKRi1j3xPIi6saKsKjnVKM7UcCCSTMPJjD/b1XpikU0pS5lqWumdOk7h0tD3Q=="
+  "resolved" "https://registry.npmjs.org/@firebase/app-check/-/app-check-0.1.2.tgz"
+  "version" "0.1.2"
   dependencies:
     "@firebase/app-check-interop-types" "0.1.0"
     "@firebase/app-check-types" "0.1.0"
-    "@firebase/component" "0.5.0"
+    "@firebase/component" "0.5.1"
     "@firebase/logger" "0.2.6"
     "@firebase/util" "1.1.0"
     "tslib" "^2.1.0"
@@ -969,13 +969,13 @@
   "resolved" "https://registry.npmjs.org/@firebase/app-types/-/app-types-0.6.2.tgz"
   "version" "0.6.2"
 
-"@firebase/app@0.6.22", "@firebase/app@0.x":
-  "integrity" "sha512-9E0KP7Z+LpBOx/oQauLYvf3XleYpbfoi058wStADUtP+eOX5GIImAFNDTOO4ZNuJfLgyrHpKi7Cct6mDdxrz+g=="
-  "resolved" "https://registry.npmjs.org/@firebase/app/-/app-0.6.22.tgz"
-  "version" "0.6.22"
+"@firebase/app@0.6.24", "@firebase/app@0.x":
+  "integrity" "sha512-PgSV4u8G8/e3B0btOd4AuMUOCSyDpPCbn9nxv5vtpQsud7rEiFCseBngbSZbf8FXCvYeTS2TJn79Vj3ifj15OQ=="
+  "resolved" "https://registry.npmjs.org/@firebase/app/-/app-0.6.24.tgz"
+  "version" "0.6.24"
   dependencies:
     "@firebase/app-types" "0.6.2"
-    "@firebase/component" "0.5.0"
+    "@firebase/component" "0.5.1"
     "@firebase/logger" "0.2.6"
     "@firebase/util" "1.1.0"
     "dom-storage" "2.1.0"
@@ -999,10 +999,10 @@
   dependencies:
     "@firebase/auth-types" "0.10.3"
 
-"@firebase/component@0.5.0":
-  "integrity" "sha512-v18csWtXb0ri+3m7wuGLY/UDgcb89vuMlZGQ//+7jEPLIQeLbylvZhol1uzW9WzoOpxMxOS2W5qyVGX36wZvEA=="
-  "resolved" "https://registry.npmjs.org/@firebase/component/-/component-0.5.0.tgz"
-  "version" "0.5.0"
+"@firebase/component@0.5.1":
+  "integrity" "sha512-l1yYAH7OSdmaLXmVBR1vjop2WNELDty3G4NxLFLysWxkcTPhqG+PjKzHEEkAgJ2slF5H3O9BFOGP9OUtrHhvMA=="
+  "resolved" "https://registry.npmjs.org/@firebase/component/-/component-0.5.1.tgz"
+  "version" "0.5.1"
   dependencies:
     "@firebase/util" "1.1.0"
     "tslib" "^2.1.0"
@@ -1014,13 +1014,13 @@
   dependencies:
     "@firebase/app-types" "0.6.2"
 
-"@firebase/database@0.10.2":
-  "integrity" "sha512-jMGtl5eBES9k0rOIZd6/EAuVB6m3LzRei1lvEiqWWBje2Xoz//7sjZcxOYtAKCCLldEI1EUrzW8Tv5yEAoPPpg=="
-  "resolved" "https://registry.npmjs.org/@firebase/database/-/database-0.10.2.tgz"
-  "version" "0.10.2"
+"@firebase/database@0.10.3":
+  "integrity" "sha512-PaQ2EEvx0LsWIqN7qsoqN4RiAJYs6FL5BFDFEPTjJZW410ECnMcNfXCASYuQSU903sY4MA0ki9H1nH0J7gb7bQ=="
+  "resolved" "https://registry.npmjs.org/@firebase/database/-/database-0.10.3.tgz"
+  "version" "0.10.3"
   dependencies:
     "@firebase/auth-interop-types" "0.1.6"
-    "@firebase/component" "0.5.0"
+    "@firebase/component" "0.5.1"
     "@firebase/database-types" "0.7.2"
     "@firebase/logger" "0.2.6"
     "@firebase/util" "1.1.0"
@@ -1032,16 +1032,16 @@
   "resolved" "https://registry.npmjs.org/@firebase/firestore-types/-/firestore-types-2.3.0.tgz"
   "version" "2.3.0"
 
-"@firebase/firestore@2.3.2":
-  "integrity" "sha512-xS5dBa1GWzzUBjyrUen81tKgJF6U81owMvmmh6AwTIVIcz5Sd+Dt2MCuyj2vpSRGEgR2SJXNOvHBw/2ORfjN+Q=="
-  "resolved" "https://registry.npmjs.org/@firebase/firestore/-/firestore-2.3.2.tgz"
-  "version" "2.3.2"
+"@firebase/firestore@2.3.4":
+  "integrity" "sha512-FXWbyIulQUsu7a//ov19Jk4ts8E+FRJvLpvWUuf/mzFjK90+vbF/PytnZiTQEb0wTqd5cbI3iZxBYKdJkM6P5g=="
+  "resolved" "https://registry.npmjs.org/@firebase/firestore/-/firestore-2.3.4.tgz"
+  "version" "2.3.4"
   dependencies:
-    "@firebase/component" "0.5.0"
+    "@firebase/component" "0.5.1"
     "@firebase/firestore-types" "2.3.0"
     "@firebase/logger" "0.2.6"
     "@firebase/util" "1.1.0"
-    "@firebase/webchannel-wrapper" "0.4.1"
+    "@firebase/webchannel-wrapper" "0.5.0"
     "@grpc/grpc-js" "^1.3.2"
     "@grpc/proto-loader" "^0.5.0"
     "node-fetch" "2.6.1"
@@ -1052,12 +1052,12 @@
   "resolved" "https://registry.npmjs.org/@firebase/functions-types/-/functions-types-0.4.0.tgz"
   "version" "0.4.0"
 
-"@firebase/functions@0.6.9":
-  "integrity" "sha512-WgrT3EG+O70pYpX2KQM2S2Is2WJbKE6XImoloMglIqiaquOCXNR9LUVbGPWQr7qEqY+QojfTgF/bGH0awqm2KA=="
-  "resolved" "https://registry.npmjs.org/@firebase/functions/-/functions-0.6.9.tgz"
-  "version" "0.6.9"
+"@firebase/functions@0.6.10":
+  "integrity" "sha512-rB6u1Yvo/z6uBV14Cr+5mc7xjbBWRmc3hUET5kfkq5q9BkDe8NW9wbqADBnhw8BUiP3TMLiBabRTZKEcdY+KJQ=="
+  "resolved" "https://registry.npmjs.org/@firebase/functions/-/functions-0.6.10.tgz"
+  "version" "0.6.10"
   dependencies:
-    "@firebase/component" "0.5.0"
+    "@firebase/component" "0.5.1"
     "@firebase/functions-types" "0.4.0"
     "@firebase/messaging-types" "0.5.0"
     "node-fetch" "2.6.1"
@@ -1068,12 +1068,12 @@
   "resolved" "https://registry.npmjs.org/@firebase/installations-types/-/installations-types-0.3.4.tgz"
   "version" "0.3.4"
 
-"@firebase/installations@0.4.26":
-  "integrity" "sha512-bHc6jlV8p1cX+GK38key4BooeZZ42//nKPmf3POWren0bACjnfHJuMnOBDuyw22ss3z6wUdiFNQjeUxvD4btGg=="
-  "resolved" "https://registry.npmjs.org/@firebase/installations/-/installations-0.4.26.tgz"
-  "version" "0.4.26"
+"@firebase/installations@0.4.27":
+  "integrity" "sha512-sHG1kYnax/UPw3IPAaPgELP1LaeRyedlz7EPTNLVEPvfOoEqj20V+psbQGdQRVPdF1ODOVwuKeptvH5iyAEtBg=="
+  "resolved" "https://registry.npmjs.org/@firebase/installations/-/installations-0.4.27.tgz"
+  "version" "0.4.27"
   dependencies:
-    "@firebase/component" "0.5.0"
+    "@firebase/component" "0.5.1"
     "@firebase/installations-types" "0.3.4"
     "@firebase/util" "1.1.0"
     "idb" "3.0.2"
@@ -1089,13 +1089,13 @@
   "resolved" "https://registry.npmjs.org/@firebase/messaging-types/-/messaging-types-0.5.0.tgz"
   "version" "0.5.0"
 
-"@firebase/messaging@0.7.10":
-  "integrity" "sha512-Z5ui3kc1GbPf2+kwNvr0HjguBbi0xTkR7/BHodHHGpz0ycuY/J2/Cl9SgwhEuB52kme4ca9sKwV1g0Ln2/iARw=="
-  "resolved" "https://registry.npmjs.org/@firebase/messaging/-/messaging-0.7.10.tgz"
-  "version" "0.7.10"
+"@firebase/messaging@0.7.11":
+  "integrity" "sha512-ASa2zaHrzY3+ozWSyfiIexdtrNgCVVdHkj+6Vxt/kxihw+hH5FuJDeOYby6PY09wq/xFnFgXFyPTFZ7y+CQW0w=="
+  "resolved" "https://registry.npmjs.org/@firebase/messaging/-/messaging-0.7.11.tgz"
+  "version" "0.7.11"
   dependencies:
-    "@firebase/component" "0.5.0"
-    "@firebase/installations" "0.4.26"
+    "@firebase/component" "0.5.1"
+    "@firebase/installations" "0.4.27"
     "@firebase/messaging-types" "0.5.0"
     "@firebase/util" "1.1.0"
     "idb" "3.0.2"
@@ -1106,13 +1106,13 @@
   "resolved" "https://registry.npmjs.org/@firebase/performance-types/-/performance-types-0.0.13.tgz"
   "version" "0.0.13"
 
-"@firebase/performance@0.4.12":
-  "integrity" "sha512-dFV0OR5IpHZwfOLFkEZuUVFmaJQresmS5G4UNFGk1E0VwU4feZ3roq75dJVYehclJxmbzgMM9M/U1bZ1/9wt3g=="
-  "resolved" "https://registry.npmjs.org/@firebase/performance/-/performance-0.4.12.tgz"
-  "version" "0.4.12"
+"@firebase/performance@0.4.13":
+  "integrity" "sha512-DY9UN15cqPm7mS5U+mnM9FEeyRaPiloPkmKCmyiVTcpLGgQTCz+FJSsLg1xblWAF7vQFDr2l/D8PyjdzSAAy7g=="
+  "resolved" "https://registry.npmjs.org/@firebase/performance/-/performance-0.4.13.tgz"
+  "version" "0.4.13"
   dependencies:
-    "@firebase/component" "0.5.0"
-    "@firebase/installations" "0.4.26"
+    "@firebase/component" "0.5.1"
+    "@firebase/installations" "0.4.27"
     "@firebase/logger" "0.2.6"
     "@firebase/performance-types" "0.0.13"
     "@firebase/util" "1.1.0"
@@ -1132,13 +1132,13 @@
   "resolved" "https://registry.npmjs.org/@firebase/remote-config-types/-/remote-config-types-0.1.9.tgz"
   "version" "0.1.9"
 
-"@firebase/remote-config@0.1.37":
-  "integrity" "sha512-SYjDOsEoUeqX1CYnUtXqVtM8MpVm2qx2Dp8NLRlLcPp/FieEza/mjRNVHBojMKuFjmyQp/RdPG8R0I9xDJ4PsQ=="
-  "resolved" "https://registry.npmjs.org/@firebase/remote-config/-/remote-config-0.1.37.tgz"
-  "version" "0.1.37"
+"@firebase/remote-config@0.1.38":
+  "integrity" "sha512-fIwSbkq0J3F8t32x98WfIduKJGu7x+suslRFHxvl3Kx8Y7WBCOE3081yHtiTe7lGyM+WMqI0vFevILrKXp0l3g=="
+  "resolved" "https://registry.npmjs.org/@firebase/remote-config/-/remote-config-0.1.38.tgz"
+  "version" "0.1.38"
   dependencies:
-    "@firebase/component" "0.5.0"
-    "@firebase/installations" "0.4.26"
+    "@firebase/component" "0.5.1"
+    "@firebase/installations" "0.4.27"
     "@firebase/logger" "0.2.6"
     "@firebase/remote-config-types" "0.1.9"
     "@firebase/util" "1.1.0"
@@ -1149,12 +1149,12 @@
   "resolved" "https://registry.npmjs.org/@firebase/storage-types/-/storage-types-0.4.1.tgz"
   "version" "0.4.1"
 
-"@firebase/storage@0.5.2":
-  "integrity" "sha512-D2lZixL6E2iXE4jObtlA3UnAbcMd3657erotiuZt5ap95m1fogiPV/gIq3KLIaT5sFdfbbDQn9mm6hVKhobYHA=="
-  "resolved" "https://registry.npmjs.org/@firebase/storage/-/storage-0.5.2.tgz"
-  "version" "0.5.2"
+"@firebase/storage@0.5.3":
+  "integrity" "sha512-/mYa1RBfPX94rpT7KpQp2ITEyu3VE54QiJA5+yJRGtz+xHHisBbx9B5Cxee8p/bMWhUfXQJzpQMRis500mevHA=="
+  "resolved" "https://registry.npmjs.org/@firebase/storage/-/storage-0.5.3.tgz"
+  "version" "0.5.3"
   dependencies:
-    "@firebase/component" "0.5.0"
+    "@firebase/component" "0.5.1"
     "@firebase/storage-types" "0.4.1"
     "@firebase/util" "1.1.0"
     "tslib" "^2.1.0"
@@ -1166,10 +1166,10 @@
   dependencies:
     "tslib" "^2.1.0"
 
-"@firebase/webchannel-wrapper@0.4.1":
-  "integrity" "sha512-0yPjzuzGMkW1GkrC8yWsiN7vt1OzkMIi9HgxRmKREZl2wnNPOKo/yScTjXf/O57HM8dltqxPF6jlNLFVtc2qdw=="
-  "resolved" "https://registry.npmjs.org/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.4.1.tgz"
-  "version" "0.4.1"
+"@firebase/webchannel-wrapper@0.5.0":
+  "integrity" "sha512-5808ztHwCy0bE154pmYSR86+uKToDcoxvM7F+nMDJ2NktxujYZLsz10e7iMXrKtyePKNP5VCVgp7s0vsViSKDA=="
+  "resolved" "https://registry.npmjs.org/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.5.0.tgz"
+  "version" "0.5.0"
 
 "@grpc/grpc-js@^1.3.2":
   "integrity" "sha512-UXepkOKCATJrhHGsxt+CGfpZy9zUn1q9mop5kfcXq1fBkTePxVNPOdnISlCbJFlCtld+pSLGyZCzr9/zVprFKA=="
@@ -1332,9 +1332,9 @@
     "@types/node" "*"
 
 "@types/express-serve-static-core@*", "@types/express-serve-static-core@^4.17.18":
-  "integrity" "sha512-8qqFN4W53IEWa9bdmuVrUcVkFemQWnt5DKPQ/oa8xKDYgtjCr2OO6NX5TIK49NLFr3mPYU2cLh92DQquC3oWWQ=="
-  "resolved" "https://registry.npmjs.org/@types/express-serve-static-core/-/express-serve-static-core-4.17.20.tgz"
-  "version" "4.17.20"
+  "integrity" "sha512-gwCiEZqW6f7EoR8TTEfalyEhb1zA5jQJnRngr97+3pzMaO1RKoI1w2bw07TK72renMUVWcWS5mLI6rk1NqN0nA=="
+  "resolved" "https://registry.npmjs.org/@types/express-serve-static-core/-/express-serve-static-core-4.17.21.tgz"
+  "version" "4.17.21"
   dependencies:
     "@types/node" "*"
     "@types/qs" "*"
@@ -1391,9 +1391,9 @@
   "version" "1.2.1"
 
 "@types/node@*", "@types/node@>=12.12.47", "@types/node@>=13.7.0":
-  "integrity" "sha512-7EIraBEyRHEe7CH+Fm1XvgqU6uwZN8Q7jppJGcqjROMT29qhAuuOxYB1uEY5UMYQKEmA5D+5tBnhdaPXSsLONA=="
-  "resolved" "https://registry.npmjs.org/@types/node/-/node-15.6.1.tgz"
-  "version" "15.6.1"
+  "integrity" "sha512-zyxJM8I1c9q5sRMtVF+zdd13Jt6RU4r4qfhTd7lQubyThvLfx6yYekWSQjGCGV2Tkecgxnlpl/DNlb6Hg+dmEw=="
+  "resolved" "https://registry.npmjs.org/@types/node/-/node-15.12.1.tgz"
+  "version" "15.12.1"
 
 "@types/normalize-package-data@^2.4.0":
   "integrity" "sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA=="
@@ -1770,7 +1770,7 @@
   optionalDependencies:
     "prettier" "^1.18.2"
 
-"@vue/devtools-api@^6.0.0-beta.10":
+"@vue/devtools-api@^6.0.0-beta.10", "@vue/devtools-api@^6.0.0-beta.11":
   "integrity" "sha512-PtHmAxFmCyCElV7uTWMrXj+fefwn4lCfTtPo9fPw0SK8/7e3UaFl8IL7lnugJmNFfeKQyuTkSoGvTq1uDaRF6Q=="
   "resolved" "https://registry.npmjs.org/@vue/devtools-api/-/devtools-api-6.0.0-beta.12.tgz"
   "version" "6.0.0-beta.12"
@@ -2263,6 +2263,13 @@
   "resolved" "https://registry.npmjs.org/aws4/-/aws4-1.11.0.tgz"
   "version" "1.11.0"
 
+"axios@^0.21.1":
+  "integrity" "sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.21.1.tgz"
+  "version" "0.21.1"
+  dependencies:
+    "follow-redirects" "^1.10.0"
+
 "babel-eslint@^10.1.0":
   "integrity" "sha512-ifWaTHQ0ce+448CYop8AdrQiBsGrnC+bMgfyKFdi6EsPLTAWG+QfyDeM6OH+FmWnKvEq5NnBMLvlBUPKQZoDSg=="
   "resolved" "https://registry.npmjs.org/babel-eslint/-/babel-eslint-10.1.0.tgz"
@@ -2717,9 +2724,9 @@
     "lodash.uniq" "^4.5.0"
 
 "caniuse-lite@^1.0.0", "caniuse-lite@^1.0.30001109", "caniuse-lite@^1.0.30001219":
-  "integrity" "sha512-e4Gyp7P8vqC2qV2iHA+cJNf/yqUKOShXQOJHQt81OHxlIZl/j/j3soEA0adAQi8CPUQgvOdDENyQ5kd6a6mNSg=="
-  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001232.tgz"
-  "version" "1.0.30001232"
+  "integrity" "sha512-zWEwIVqnzPkSAXOUlQnPW2oKoYb2aLQ4Q5ejdjBcnH63rfypaW34CxaeBn1VMya2XaEU3P/R2qHpWyj+l0BT1A=="
+  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001235.tgz"
+  "version" "1.0.30001235"
 
 "case-sensitive-paths-webpack-plugin@^2.3.0":
   "integrity" "sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw=="
@@ -3123,17 +3130,17 @@
     "webpack-log" "^2.0.0"
 
 "core-js-compat@^3.6.5", "core-js-compat@^3.9.0", "core-js-compat@^3.9.1":
-  "integrity" "sha512-mdrcxc0WznfRd8ZicEZh1qVeJ2mu6bwQFh8YVUK48friy/FOwFV5EJj9/dlh+nMQ74YusdVfBFDuomKgUspxWQ=="
-  "resolved" "https://registry.npmjs.org/core-js-compat/-/core-js-compat-3.13.1.tgz"
-  "version" "3.13.1"
+  "integrity" "sha512-R4NS2eupxtiJU+VwgkF9WTpnSfZW4pogwKHd8bclWU2sp93Pr5S1uYJI84cMOubJRou7bcfL0vmwtLslWN5p3A=="
+  "resolved" "https://registry.npmjs.org/core-js-compat/-/core-js-compat-3.14.0.tgz"
+  "version" "3.14.0"
   dependencies:
     "browserslist" "^4.16.6"
     "semver" "7.0.0"
 
 "core-js@^3.13.1", "core-js@^3.6.5":
-  "integrity" "sha512-JqveUc4igkqwStL2RTRn/EPFGBOfEZHxJl/8ej1mXJR75V3go2mFF4bmUYkEIT1rveHKnkUlcJX/c+f1TyIovQ=="
-  "resolved" "https://registry.npmjs.org/core-js/-/core-js-3.13.1.tgz"
-  "version" "3.13.1"
+  "integrity" "sha512-3s+ed8er9ahK+zJpp9ZtuVcDoFzHNiZsPbNAAE4KXgrRHbjSqqNN6xGSXq6bq7TZIbKj4NLrLb6bJ5i+vSVjHA=="
+  "resolved" "https://registry.npmjs.org/core-js/-/core-js-3.14.0.tgz"
+  "version" "3.14.0"
 
 "core-js@3.6.5":
   "integrity" "sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA=="
@@ -3462,6 +3469,11 @@
   "resolved" "https://registry.npmjs.org/deepmerge/-/deepmerge-1.5.2.tgz"
   "version" "1.5.2"
 
+"deepmerge@^4.2.2":
+  "integrity" "sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg=="
+  "resolved" "https://registry.npmjs.org/deepmerge/-/deepmerge-4.2.2.tgz"
+  "version" "4.2.2"
+
 "default-gateway@^4.2.0":
   "integrity" "sha512-h6sMrVB1VMWVrW13mSc6ia/DwYYw5MN6+exNu1OaJeFac5aSAvwM7lZ0NVfTABuSkQelr4h5oebg3KB1XPdjgA=="
   "resolved" "https://registry.npmjs.org/default-gateway/-/default-gateway-4.2.0.tgz"
@@ -3703,9 +3715,9 @@
   "version" "2.7.4"
 
 "electron-to-chromium@^1.3.723":
-  "integrity" "sha512-K2wXfo9iZQzNJNx67+Pld0DRF+9bYinj62gXCdgPhcu1vidwVuLPHQPPFnCdO55njWigXXpfBiT90jGUPbw8Zg=="
-  "resolved" "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.743.tgz"
-  "version" "1.3.743"
+  "integrity" "sha512-F+v2zxZgw/fMwPz/VUGIggG4ZndDsYy0vlpthi3tjmDZlcfbhN5mYW0evXUsBr2sUtuDANFtle410A9u/sd/4A=="
+  "resolved" "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.749.tgz"
+  "version" "1.3.749"
 
 "elliptic@^6.5.3":
   "integrity" "sha512-iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ=="
@@ -3830,6 +3842,11 @@
     "is-date-object" "^1.0.1"
     "is-symbol" "^1.0.2"
 
+"es6-promise@^4.2.8":
+  "integrity" "sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w=="
+  "resolved" "https://registry.npmjs.org/es6-promise/-/es6-promise-4.2.8.tgz"
+  "version" "4.2.8"
+
 "escalade@^3.1.1":
   "integrity" "sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw=="
   "resolved" "https://registry.npmjs.org/escalade/-/escalade-3.1.1.tgz"
@@ -3894,12 +3911,12 @@
   "version" "2.1.0"
 
 "eslint@^6.2.0 || ^7.0.0", "eslint@^7.27.0", "eslint@>= 4.12.1", "eslint@>=5.0.0":
-  "integrity" "sha512-JZuR6La2ZF0UD384lcbnd0Cgg6QJjiCwhMD6eU4h/VGPcVGwawNNzKU41tgokGXnfjOOyI6QIffthhJTPzzuRA=="
-  "resolved" "https://registry.npmjs.org/eslint/-/eslint-7.27.0.tgz"
-  "version" "7.27.0"
+  "integrity" "sha512-UMfH0VSjP0G4p3EWirscJEQ/cHqnT/iuH6oNZOB94nBjWbMnhGEPxsZm1eyIW0C/9jLI0Fow4W5DXLjEI7mn1g=="
+  "resolved" "https://registry.npmjs.org/eslint/-/eslint-7.28.0.tgz"
+  "version" "7.28.0"
   dependencies:
     "@babel/code-frame" "7.12.11"
-    "@eslint/eslintrc" "^0.4.1"
+    "@eslint/eslintrc" "^0.4.2"
     "ajv" "^6.10.0"
     "chalk" "^4.0.0"
     "cross-spawn" "^7.0.2"
@@ -3916,7 +3933,7 @@
     "fast-deep-equal" "^3.1.3"
     "file-entry-cache" "^6.0.1"
     "functional-red-black-tree" "^1.0.1"
-    "glob-parent" "^5.0.0"
+    "glob-parent" "^5.1.2"
     "globals" "^13.6.0"
     "ignore" "^4.0.6"
     "import-fresh" "^3.0.0"
@@ -4280,24 +4297,24 @@
     "path-exists" "^4.0.0"
 
 "firebase@^8.6.3":
-  "integrity" "sha512-VjaHkR+BsTpXXrQec84FJQiGz/x7K7a+V9JHWDRUbd+XANgxBiCC+p5WDUUv0bgCw5Swg02xLGdFRkqx2LIjSg=="
-  "resolved" "https://registry.npmjs.org/firebase/-/firebase-8.6.3.tgz"
-  "version" "8.6.3"
+  "integrity" "sha512-87oWWtpH6Mq927y9ZcUf9J/g59f/IU4R0x1TrQAQ2Qr8Voy4TqAoC09DqOa0rm8dVFbk6e+4cnw6KCEW83Y0EQ=="
+  "resolved" "https://registry.npmjs.org/firebase/-/firebase-8.6.5.tgz"
+  "version" "8.6.5"
   dependencies:
-    "@firebase/analytics" "0.6.10"
-    "@firebase/app" "0.6.22"
-    "@firebase/app-check" "0.1.1"
+    "@firebase/analytics" "0.6.11"
+    "@firebase/app" "0.6.24"
+    "@firebase/app-check" "0.1.2"
     "@firebase/app-types" "0.6.2"
     "@firebase/auth" "0.16.6"
-    "@firebase/database" "0.10.2"
-    "@firebase/firestore" "2.3.2"
-    "@firebase/functions" "0.6.9"
-    "@firebase/installations" "0.4.26"
-    "@firebase/messaging" "0.7.10"
-    "@firebase/performance" "0.4.12"
+    "@firebase/database" "0.10.3"
+    "@firebase/firestore" "2.3.4"
+    "@firebase/functions" "0.6.10"
+    "@firebase/installations" "0.4.27"
+    "@firebase/messaging" "0.7.11"
+    "@firebase/performance" "0.4.13"
     "@firebase/polyfill" "0.3.36"
-    "@firebase/remote-config" "0.1.37"
-    "@firebase/storage" "0.5.2"
+    "@firebase/remote-config" "0.1.38"
+    "@firebase/storage" "0.5.3"
     "@firebase/util" "1.1.0"
 
 "flat-cache@^3.0.4":
@@ -4321,7 +4338,7 @@
     "inherits" "^2.0.3"
     "readable-stream" "^2.3.6"
 
-"follow-redirects@^1.0.0":
+"follow-redirects@^1.0.0", "follow-redirects@^1.10.0":
   "integrity" "sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg=="
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.1.tgz"
   "version" "1.14.1"
@@ -4464,7 +4481,7 @@
     "is-glob" "^3.1.0"
     "path-dirname" "^1.0.0"
 
-"glob-parent@^5.0.0":
+"glob-parent@^5.1.2":
   "integrity" "sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow=="
   "resolved" "https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz"
   "version" "5.1.2"
@@ -4500,14 +4517,14 @@
   "resolved" "https://registry.npmjs.org/globals/-/globals-11.12.0.tgz"
   "version" "11.12.0"
 
-"globals@^12.1.0":
-  "integrity" "sha512-BWICuzzDvDoH54NHKCseDanAhE3CeDorgDL5MT6LMXXj2WCnd9UC2szdk4AWLfjdgNBCXLUanXYcpBBKOSWGwg=="
-  "resolved" "https://registry.npmjs.org/globals/-/globals-12.4.0.tgz"
-  "version" "12.4.0"
-  dependencies:
-    "type-fest" "^0.8.1"
-
 "globals@^13.6.0":
+  "integrity" "sha512-74/FduwI/JaIrr1H8e71UbDE+5x7pIPs1C2rrwC52SszOo043CsWOZEMW7o2Y58xwm9b+0RBKDxY5n2sUpEFxA=="
+  "resolved" "https://registry.npmjs.org/globals/-/globals-13.9.0.tgz"
+  "version" "13.9.0"
+  dependencies:
+    "type-fest" "^0.20.2"
+
+"globals@^13.9.0":
   "integrity" "sha512-74/FduwI/JaIrr1H8e71UbDE+5x7pIPs1C2rrwC52SszOo043CsWOZEMW7o2Y58xwm9b+0RBKDxY5n2sUpEFxA=="
   "resolved" "https://registry.npmjs.org/globals/-/globals-13.9.0.tgz"
   "version" "13.9.0"
@@ -4678,9 +4695,9 @@
   "version" "1.1.0"
 
 "highlight.js@^10.7.1":
-  "integrity" "sha512-oFLl873u4usRM9K63j4ME9u3etNF0PLiJhSQ8rdfuL51Wn3zkD6drf9ZW0dOzjnZI22YYG24z30JcmfCZjMgYg=="
-  "resolved" "https://registry.npmjs.org/highlight.js/-/highlight.js-10.7.2.tgz"
-  "version" "10.7.2"
+  "integrity" "sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A=="
+  "resolved" "https://registry.npmjs.org/highlight.js/-/highlight.js-10.7.3.tgz"
+  "version" "10.7.3"
 
 "hmac-drbg@^1.0.1":
   "integrity" "sha1-0nRXAQJabHdabFRXk+1QL8DGSaE="
@@ -5350,6 +5367,11 @@
   "integrity" "sha512-JVAfqNPTvNq3sB/VHQJAFxN/sPgKnsKrCwyRt15zwNCdrMMJDdcEOdubuy+DuJYYdm0ox1J4uzEuYKkN+9yhVg=="
   "resolved" "https://registry.npmjs.org/javascript-stringify/-/javascript-stringify-2.1.0.tgz"
   "version" "2.1.0"
+
+"js-cookie@^2.2.1":
+  "integrity" "sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ=="
+  "resolved" "https://registry.npmjs.org/js-cookie/-/js-cookie-2.2.1.tgz"
+  "version" "2.2.1"
 
 "js-message@1.0.7":
   "integrity" "sha512-efJLHhLjIyKRewNS9EGZ4UpI8NguuL6fKkhRxVuMmrGV2xN/0APGdQYwLFky5w9naebSZ0OwAGp0G6/2Cg90rA=="
@@ -6787,9 +6809,9 @@
     "icss-utils" "^5.0.0"
 
 "postcss-modules@^4.0.0":
-  "integrity" "sha512-ghS/ovDzDqARm4Zj6L2ntadjyQMoyJmi0JkLlYtH2QFLrvNlxH5OAVRPWPeKilB0pY7SbuhO173KOWkPAxRJcw=="
-  "resolved" "https://registry.npmjs.org/postcss-modules/-/postcss-modules-4.0.0.tgz"
-  "version" "4.0.0"
+  "integrity" "sha512-dBT39hrXe4OAVYJe/2ZuIZ9BzYhOe7t+IhedYeQ2OxKwDpAGlkEN/fR0fGnrbx4BvgbMReRX4hCubYK9cE/pJQ=="
+  "resolved" "https://registry.npmjs.org/postcss-modules/-/postcss-modules-4.1.3.tgz"
+  "version" "4.1.3"
   dependencies:
     "generic-names" "^2.0.1"
     "icss-replace-symbols" "^1.1.0"
@@ -7694,6 +7716,11 @@
   "resolved" "https://registry.npmjs.org/shell-quote/-/shell-quote-1.7.2.tgz"
   "version" "1.7.2"
 
+"shvl@^2.0.2":
+  "integrity" "sha512-V7C6S9Hlol6SzOJPnQ7qzOVEWUQImt3BNmmzh40wObhla3XOYMe4gGiYzLrJd5TFa+cI2f9LKIRJTTKZSTbWgw=="
+  "resolved" "https://registry.npmjs.org/shvl/-/shvl-2.0.3.tgz"
+  "version" "2.0.3"
+
 "signal-exit@^3.0.0", "signal-exit@^3.0.2":
   "integrity" "sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA=="
   "resolved" "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.3.tgz"
@@ -8377,11 +8404,6 @@
   "resolved" "https://registry.npmjs.org/type-fest/-/type-fest-0.6.0.tgz"
   "version" "0.6.0"
 
-"type-fest@^0.8.1":
-  "integrity" "sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA=="
-  "resolved" "https://registry.npmjs.org/type-fest/-/type-fest-0.8.1.tgz"
-  "version" "0.8.1"
-
 "type-is@~1.6.17", "type-is@~1.6.18":
   "integrity" "sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g=="
   "resolved" "https://registry.npmjs.org/type-is/-/type-is-1.6.18.tgz"
@@ -8681,7 +8703,7 @@
   "resolved" "https://registry.npmjs.org/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz"
   "version" "1.9.1"
 
-"vue@^2 || ^3.0.0-0", "vue@^3.0.0", "vue@3.0.11":
+"vue@^2 || ^3.0.0-0", "vue@^3.0.0", "vue@^3.0.2", "vue@3.0.11":
   "integrity" "sha512-3/eUi4InQz8MPzruHYSTQPxtM3LdZ1/S/BvaU021zBnZi0laRUyH6pfuE4wtUeLvI8wmUNwj5wrZFvbHUXL9dw=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.0.11.tgz"
   "version" "3.0.11"
@@ -8689,6 +8711,21 @@
     "@vue/compiler-dom" "3.0.11"
     "@vue/runtime-dom" "3.0.11"
     "@vue/shared" "3.0.11"
+
+"vuex-persistedstate@^4.0.0-beta.3":
+  "integrity" "sha512-T4IRD27qoUWh+8qr6T6zVp15xO7x/nPgnU13OD0C2uUwA7U9PhGozrj6lvVmMYDyRgc36J0msMXn3GvwHjkIhA=="
+  "resolved" "https://registry.npmjs.org/vuex-persistedstate/-/vuex-persistedstate-4.0.0-beta.3.tgz"
+  "version" "4.0.0-beta.3"
+  dependencies:
+    "deepmerge" "^4.2.2"
+    "shvl" "^2.0.2"
+
+"vuex@^3.0 || ^4.0.0-rc", "vuex@^4.0.1":
+  "integrity" "sha512-MddakQTAnImDkK1YhEESowKSU5KcjqHH3L1ScPx1lj6NzDDX0FuRBZqJoME5O7/nvj9puudDf6xnWU2w/cqI7g=="
+  "resolved" "https://registry.npmjs.org/vuex/-/vuex-4.0.1.tgz"
+  "version" "4.0.1"
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.11"
 
 "watchpack-chokidar2@^2.0.1":
   "integrity" "sha512-nCFfBIPKr5Sh61s4LPpy1Wtfi0HE8isJ3d2Yb5/Ppw2P2B/3eVSEBjKfN0fmHJSK14+31KwMKmcrzs2GM4P0Ww=="

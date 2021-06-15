@@ -30,7 +30,7 @@
 			<div class="heading">
 				<h2>{{ s_usr.displayName }}</h2>
 			</div>
-			<button class="logout" @click="logout">logout</button>
+			<button class="logout" @click="$store.dispatch('logout')">logout</button>
 		</header>
 		<div class="messages" >
 			<ul id="chat">
@@ -61,7 +61,7 @@
             		<span class="burger-bar burger-bar--3"></span>
         		</button>
     		</div>
-			<button class="logout" @click="$emit('logout')">logout</button>
+			<button class="logout" @click="$store.dispatch('logout')">logout</button>
 		</header>
 		<h2>Select an User to chat with!</h2>
 	</main>
@@ -72,6 +72,12 @@
 import firebase from 'firebase'
 
   export default {
+	  beforeMount() {
+		  window.addEventListener("beforeunload", this.preventNav)
+	  },
+	  beforeDestroy() {
+		  window.addEventListener("beforeunload", this.preventNav)
+	  },
     mounted() {
         this.db.collection('messages').orderBy('createdAt')
             .onSnapshot( querySnap => {
@@ -85,11 +91,10 @@ import firebase from 'firebase'
             })	
 		console.log(this.user)
     },
-	props: {
-		user: Object,
-	},
     data() {
         return {
+			user: this.$store.state.user,
+			isEditing: false,
           db: firebase.firestore(),
           message: '',
           messages: [],
@@ -107,6 +112,11 @@ import firebase from 'firebase'
 		toggleActive() {
 			this.active = !this.active
 			this.open = !this.open
+		},
+		preventNav(event) {
+			if (!this.isEditing) return
+			event.preventDefault()
+			event.returnValue = ""
 		},
         async sendMessage() {
 

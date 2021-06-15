@@ -7,25 +7,15 @@
                 <router-link to="/about">ABOUT</router-link>
             </li>
             <li v-if="user" class="nav-item">
-                <a @click="$emit('logout')" >LOGOUT</a>
+                <a @click=" $store.dispatch('logout') " >LOGOUT</a>
             </li>
             <li v-else class="nav-item">
-                <a @click="$emit('login')">LOGIN</a>
+                <a @click=" $store.dispatch('login') ">LOGIN</a>
             </li>
         </ul>
     </div>
 </div>
 </template>
-
-<script>
-import firebase from 'firebase'
-
-export default {
-    name: 'App',
-    emits: ['login'],
-    
-}
-</script>
 
 <style scoped >
 
