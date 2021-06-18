@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import firebase from 'firebase'
 import { mapState } from 'vuex'
 
 export default {
@@ -26,8 +25,8 @@ export default {
 
 <style >
 body {
-    background-image: url('assets/chat_2.jpg');
-    background-size: 1920px, 1080px;
-    
+    /* background-color:#2E3440; */
+    background-image: url("./assets/chat_2.png");
+    background-repeat:cover;
 }
 </style>

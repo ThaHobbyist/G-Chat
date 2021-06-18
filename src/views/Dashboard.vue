@@ -3,17 +3,34 @@
     
 <div class="container" id="container">
 	<aside :class=" { close: open } ">
+		<div class="user">
+			<div class="img"><img :src= user.photoURL alt=""></div>
+			<div class="heading"><h2> {{ user.displayName }} </h2>
+			<button class="logout" @click="$store.dispatch('logout')"><i class="fa fa-sign-out" aria-hidden="true"></i></button></div>
+			
+		</div>
+		<hr class="break">
 		<header>
-			<input type="text" id="mySearch" @change="search" @keyup="search" v-model="searchText" placeholder="search">
+			<input type="text" id="mySearch" @change="search" @keyup="search" v-model="searchText" placeholder="Search names...">
 		</header>
 		<ul v-if="searchText.trim().length === 0">
-			<li v-for="usr in users" :key="usr.displayName" @click="openChat(usr)">
-				<a>{{ usr.displayName }} </a>
+			<li v-for="usr in users" :key="usr.displayName" >
+				
+				<div class="list" @click="openChat(usr)">
+					<div class="img"><img :src = usr.photoURL alt=""></div>
+					<div class="heading"><h3>{{ usr.displayName }} </h3></div>
+				</div>
+				<hr>
 			</li>
 		</ul>
 		<ul v-else>
-			<li v-for="usr in searchResult" :key="usr.displayName" @click="openChat(usr)">
-				<a>{{ usr.displayName }} </a>
+			<li v-for="usr in searchResult" :key="usr.displayName" >
+				<div class="list" @click="openChat(usr)">
+					<div class="img"><img :src = usr.photoURL alt=""></div>
+					<div class="heading"><h3>{{ usr.displayName }} </h3></div>
+					
+				</div>
+				<hr>
 			</li>
 		</ul>
 	</aside>
@@ -30,27 +47,25 @@
 			<div class="heading">
 				<h2>{{ s_usr.displayName }}</h2>
 			</div>
-			<button class="logout" @click="$store.dispatch('logout')">logout</button>
 		</header>
 		<div class="messages" >
-			<ul id="chat">
-				<li v-for="(msg, index) in messages" :key="'index-'+index" :class="sentOrRecieved(msg.sender, msg.reciever)">
-					<div class="message">
-						<h3>{{ msg.text }}</h3>
-					</div>
-					<!--div class="entete" >
-						<h3>{{ msg.createdAt }}</h3>
-					</div-->
+			<ul id="chat" ref="scrollable">
+				<li v-for="(msg, index) in messages" :key="'index-'+index" :class="sentOrRecieved(msg.sender, msg.reciever)" >
+					<h3 v-if="msg.text">{{ msg.text }}</h3>
+					<img v-else class="image" :src= msg.downloadURL alt="">
 				</li>
 			</ul>
 		</div>
 		<footer>
       		<form v-on:submit.prevent="sendMessage">
-        		<input v-model="message" type="text" placeholder="Type your message"/>
-        		<button :disabled="!message" type="submit"><img src="../assets/send_2.png" alt="send"/></button>
+        		<input class="text" v-model="message" type="text" placeholder="Type your message"/>
+				<input class="file" type="file" @change="onFilePicked" hidden="hidden" ref="fileInput"/>
+				<button type="button" @click="$refs.fileInput.click()" ><i class="fa fa-file-image-o fa-2x"></i></button>
+				<span v-if="imageName" id="custom-text"> {{imageName}} </span>
+        		<button v-if="!imageName" :disabled="!message" type="submit"><i class="fa fa-paper-plane fa-2x" aria-hidden=true></i></button>
+				<button v-else  @click="onUpload"><i class="fa fa-upload" aria-hidden="true"></i></button>
       		</form>
 		</footer>
-		<div ref="scrollable"></div>
 	</main>
 	<main class="text" v-else :class=" { closed: !open } ">
 		<header>
@@ -61,51 +76,56 @@
             		<span class="burger-bar burger-bar--3"></span>
         		</button>
     		</div>
-			<button class="logout" @click="$store.dispatch('logout')">logout</button>
+			
 		</header>
 		<h2>Select an User to chat with!</h2>
 	</main>
+	<div class="right">
+		<h1>About User</h1>
+		<img :src= s_usr.photoURL alt="" class="image">
+		<h2> {{s_usr.displayName}} </h2>
+		<h3> {{s_usr.email}} </h3>
+	</div>
 </div>
 </template>
 
 <script>
 import firebase from 'firebase'
 
-  export default {
-	  beforeMount() {
-		  window.addEventListener("beforeunload", this.preventNav)
-	  },
-	  beforeDestroy() {
-		  window.addEventListener("beforeunload", this.preventNav)
-	  },
+export default {
+	  
     mounted() {
         this.db.collection('messages').orderBy('createdAt')
             .onSnapshot( querySnap => {
-                this.messages = querySnap.docs.map(doc => doc.data())
-				console.log(this.messages)
+                this.messages = querySnap.docs.map(doc => doc.data())	
             })
         this.db.collection('users').where("email", "!=", this.user.email)
             .onSnapshot( querySnap => {
                 this.users = querySnap.docs.map(doc => doc.data())
                 console.log(this.users)
             })	
-		console.log(this.user)
     },
     data() {
         return {
 			user: this.$store.state.user,
-			isEditing: false,
-          db: firebase.firestore(),
-          message: '',
-          messages: [],
-		  view_messages: [],
-          users: [],
-          s_usr: [],
-		  searchResult: [],
-		  searchText: "",
-		  show: false,
-		  open: true,
-		  active: false,
+			db: firebase.firestore(),
+			message: '',
+			messages: [],
+			view_messages: [],
+			users: [],
+			s_usr: [],
+			searchResult: [],
+			searchText: "",
+			show: false,
+			open: true,
+			active: false,
+			photo: null, 
+			photo_url: null,
+			dialogue:false,
+			imageName: "",
+			imageFile: "",
+			imageUrl: "",
+			imageUrls: [],
         }
     },
     methods: {
@@ -113,27 +133,23 @@ import firebase from 'firebase'
 			this.active = !this.active
 			this.open = !this.open
 		},
-		preventNav(event) {
-			if (!this.isEditing) return
-			event.preventDefault()
-			event.returnValue = ""
-		},
         async sendMessage() {
 
-          const messageInfo = {
-            'sender': this.user.uid,
-            'reciever': this.s_usr.userUID,
-            'displayName': this.user.displayName,
-            'photoURL': this.user.photoURL,
-            'text': this.message,
-            'createdAt': Date.now(),
-          }
+			const messageInfo = {
+				'sender': this.user.uid,
+				'reciever': this.s_usr.userUID,
+				'displayName': this.user.displayName,
+				'photoURL': this.user.photoURL,
+				'type': "text",
+				'text': this.message,
+				'createdAt': Date.now(),
+			}
 
-          await this.db.collection('messages').add(messageInfo)
+			await this.db.collection('messages').add(messageInfo)
 
-          this.message = ''
-          this.$refs['scrollable'].scrollIntoView({ behaviour: 'smooth'})
-          
+			this.message = ''
+			this.$refs['scrollable'].scrollIntoView({ behaviour: 'smooth'})
+			
         },
         sentOrRecieved(senderID, recieverID) {
           if (senderID == this.s_usr.userUID && recieverID == this.user.uid){
@@ -152,19 +168,8 @@ import firebase from 'firebase'
 			this.show = true
 			this.toggleActive()
 			this.searchText = ""
-        },
-        print(user) {
-          console.log(user)
-        },
-		logout() {
-            firebase.auth().signOut().then(
-                () => {
-					console.log("works")
-                }).catch((error) => {
-                    console.log(error.message)
-					console.log("error")
-                })
-			this.$router.replace('/')
+			
+			console.log(this.view_messages)
         },
 		search() {
 			console.log(this.searchText)
@@ -176,7 +181,51 @@ import firebase from 'firebase'
 				}
 				
 			})
-		}
+		},
+		onFilePicked(event) {
+			const files = event.target.files
+			if(files[0] !== undefined) {
+				this.imageName = files[0].name
+				if (this.imageName.lastIndexOf(".") <= 0) {
+					return
+				}
+				const fr = new FileReader()
+				fr.readAsDataURL(files[0])
+				fr.addEventListener("load", () => {
+					this.imageUrl = fr.result
+					this.imageFile = files[0]
+				})
+			}
+			else {
+				this.imageName = ""
+				this.imageFile = ""
+				this.imageUrl = ""
+			}
+		},
+		onUpload() {
+			var storageRef = firebase.storage().ref()
+			var mountainsRef = storageRef.child(` images/${this.imageName} `)
+
+			mountainsRef.put(this.imageFile).then(snapshot => {
+				snapshot.ref.getDownloadURL().then(downloadURL => {
+					console.log(downloadURL)
+					this.db.collection("messages").add({
+						'type':'image',
+						'downloadURL': downloadURL,
+						'createdAt': Date.now(),
+						'sender': this.user.uid,
+						'reciever': this.s_usr.userUID,
+						'displayName': this.user.displayName,
+						'photoURL': this.user.photoURL,
+						'text': null,
+					})
+				})
+			})
+
+			this.imageName = ""
+			this.imageFile = ""
+			this.imageUrl = ""
+		} 
     },
   }
 </script>
@@ -224,45 +273,74 @@ form.example::after {
   clear: both;
   display: table;
 }
-
-*{
-	box-sizing:border-box;
-}
-body{
-	background-color:#abd9e9;
-	font-family:Arial;
-	width: 100%;
-}
 #container{
 	width:100%;
 	height:97vh;
-	background:rgba(224, 224, 224, 0.808);
+	background:transparent;
 	margin:0 auto;
-	font-size:0;
-	border-radius:5px;
 	overflow:hidden;
-	border: 2px solid #3b3e49;
 }
 aside{
-	width:20%;
+	width:18%;
 	height:100%;
-	background-color:#3b3e49;
+	background-color:#3B4252;
 	display:inline-block;
+	border-radius: 10px;
 	font-size:15px;
-	vertical-align:top;
 	overflow: hidden;
 	transition: all 499ms ease;
 }
 main{
-	width:80%;
+	width:60%;
 	height:100%;
 	display:inline-block;
 	font-size:15px;
 	vertical-align:top;
+	border-radius: 10px;
+	margin-left: 10px;
+	background-color: #3B4252;
 }
 
+.right{
+	display: inline-block;
+	background-color: #3B4252;
+	margin-left:10px;
+	width: 20.5%;
+	height: 100%;
+	vertical-align: top;
+	border-radius: 10px;
+	text-align: center;
+	font-family: 'Poppins', sans-serif;
+}
+
+.right h1{
+	font-size: 30px;
+	margin-left: 5%;
+	text-decoration: underline;
+	color: white;
+	font-weight: 300;
+	text-align: left;
+	width: 100%;
+}
+
+.right img{
+	border-radius: 50%;
+	width: 40%;
+	align-self: center;
+	border: 4px solid #62708b ;
+}
+
+.right h2{
+	font-size: 20px;
+	color: white;
+}
+
+.right h3{
+	font-size: 14px;
+	color: white;
+}
 aside header{
-	padding:30px 20px;
+	padding: 15px 20px;
 }
 aside input{
 	width:100%;
@@ -271,7 +349,7 @@ aside input{
 	padding:0 50px 0 20px;
 	background-color:#5e616a;
 	border:none;
-	border-radius:3px;
+	border-radius: 20px;
 	color:#fff;
 	background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_search.png);
 	background-repeat:no-repeat;
@@ -279,35 +357,121 @@ aside input{
 	background-position-y: center;
 	background-size:40px;
 }
+
 aside input::placeholder{
 	color:#fff;
 }
+
+aside .logout {
+	height: 30%;
+	width: 20%;
+	float: right;
+	margin-right: 15%;
+	margin-top: 4%;
+	cursor: pointer;
+	background-color: transparent;
+	border: 1px solid black;
+	border-radius: 7px;
+	color: white;
+}
+
+aside .user {
+	font-family: 'Poppins', sans-serif;
+	
+	color: #ccc;
+	padding: 20px 0px;
+	text-align: left;
+	display: flex;
+}
+
+aside .user .heading{
+	width: 100%;
+}
+
+aside .user h2{
+	padding: 10px;
+	font-weight: 700;
+	font-size: 19px;
+	padding-right: 20px;
+	vertical-align: top;
+	margin-bottom: 0px;
+	margin-top: 3%;
+}
+
+aside .user img{
+	border-radius: 50%;
+	border:2px solid rgb(255, 255, 255);
+	width: 90px;
+	height: 90px;
+	margin-left: 10px;
+}
+
+aside .break {
+	width: 100%;
+	margin: 0px;
+}
+
 aside ul{
 	padding-left:0;
 	margin:0;
-	height: 83%;
+	height: 70%;
 	list-style-type:none;
 	overflow-y:scroll;
 }
-aside li{
+
+::-webkit-scrollbar{
+	width:5px;
+	transition: smooth;
+}
+
+::-webkit-scrollbar:hover{
+	width:10px;
+}
+
+::-webkit-scrollbar-track{
+	background: transparent;
+}
+
+::-webkit-slider-thumb{
+	background: rgb(0, 87, 187);
+}
+::-webkit-scrollbar-thumb:hover{
+	background: rgb(0, 102, 219);
+}
+aside li .list{
 	padding:10px 10px;
-	font-family: Boogaloo, cursive;
+	width: 100%;
+	font-family: Roboto, sans-serif;
+	font-weight: 100;
 	font-size: 25px;
 	cursor: pointer;
+	display: flex;
 }
-aside li:hover{
+aside li .list:hover{
 	background-color:#5e616a;
+}
+
+aside li .list .heading{
+	margin-left: 10px;
+}
+
+aside li hr {
+	width: 80%;
+	height: 1px;
+	float:center;
+	border: none;
+	background-color: #475064;
 }
 
 aside li img{
 	border-radius:50%;
-	margin-left:20px;
-	margin-right:8px;
+	width: 50px;
+	height: 50px;
+	display: inline-block;
 }
 aside li div{
 	display:inline-block;
 	vertical-align:top;
-	margin-top:12px;
 }
 aside li h2{
 	font-size:14px;
@@ -316,61 +480,38 @@ aside li h2{
 	margin-bottom:5px;
 }
 aside li h3{
-	font-size:12px;
-	color:#7e818a;
-	font-weight:normal;
+	font-size:18px;
+	color:#c7c7c7;
+	font-weight: 400;
+	margin-top:4%
 }
 
-.status{
-	width:8px;
-	height:8px;
-	border-radius:50%;
-	display:inline-block;
-	margin-right:7px;
-}
-.green{
-	background-color:#58b666;
-}
-.orange{
-	background-color:#ff725d;
-}
-.blue{
-	background-color:#6fbced;
-	margin-right:0;
-	margin-left:7px;
-}
 .text{
 	background-color: none;
 	text-align: center;
 }
 
 .text h2{
-	font-family: Rowdies, cursive;
+	font-family: 'Poppins', sans-serif;
 	vertical-align: middle;
+	font-weight: 800;
+	color: white;
 }
 
 main .messages {
-	height: 74%;
-	background-image: url("../assets/chat_1.png");
-	background-repeat:round;
-}
-
-main header button {
-	font-family: 'Overlock SC', cursive;
-	float: right;
-	font-size: 20px;
-	border: none;
-	background-color: rgba(255, 255, 255, 0.596);
-	cursor: pointer;
-	border: 1px solid rgba(128, 128, 128, 0.521);
-	text-align: center;
-	vertical-align: center;
-
+	height: 76.5%;
+	background-color:#3B4252 ;
+	padding-left: 1%;
+	padding-right: 1%;
+	padding-top: 2%;
 }
 
 main header{
 	height:110px;
 	padding:30px 20px 30px 40px;
+	background-color: #434C5E;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
 main header img{
@@ -384,22 +525,20 @@ main header img:last-child{
 	margin-top:8px;
 }
 main header div{
-	margin-left:10px;
-	margin-right:145px;
-	vertical-align: middle;
+	margin-left:5%;
+
 }
 main header h2{
-	font-family: Rowdies, cursive;
-	font-size:30px;
+	font-family: 'Poppins', sans-serif;
+	color: white;
+	font-size:20px;
+	font-weight: 400;
 	margin:5px;
+	margin-left: 10px;
 	vertical-align: middle;
-	text-align: center;
+	text-align: left;
 }
-main header h3{
-	font-size:14px;
-	font-weight:normal;
-	color:#7e818a;
-}
+
 #chat::-webkit-scrollbar {
   display: none;
 }
@@ -416,57 +555,121 @@ main header h3{
 	list-style-type:none;
 	overflow-y:scroll;
 	height: 100%;
-	border-top:2px solid #fff;
-	border-bottom:2px solid #fff;
+	width: 100%;
+	color: white;
 }
 #chat li{
-	padding:10px 10px;
+	display: inline-block;
+	clear:both;
+	padding: 15px;
+	margin-bottom: 5px;
+	border-radius: 5px;
 
 }
 #chat h2,#chat h3{
 	display:inline-block;
-	font-family: 'Patrick Hand', cursive;
+	font-family: 'Lato', sans-serif;
 	font-size: 18px;
 	font-weight:normal;
-}
-#chat h3{
-	color:rgb(255, 254, 254);
+	margin:0;
 }
 #chat .entete{
 	margin-bottom:5px;
 }
-#chat .message{
-	padding:10px 20px;
-	color:#fff;
-	line-height:10px;
-	max-width:90%;
-	display:inline-block;
-	text-align:left;
-	border-radius:40px;
-	
+
+#chat .image{
+	border-radius:5px;
+	max-width: 500px;
+	max-height: 500px;
 }
-#chat .me{
+
+#chat img{
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	border-radius: 40px;
+}
+
+.me {
 	text-align:right;
+	background-color:#354194;
+	float: right ;
 }
-#chat .you .message{
-	background-color:#58b666;
+.you {
+	text-align: left ;
+	float: left ;
+	background-color:#434C5E ;
+	border: 2px solid #4C566A ;
 }
-#chat .me .message{
-	background-color:#6fbced;
-}
+
 #chat .none{
+	width: 0;
+	height: 0;
 	display: none;
 }
 
+.me:last-of-type {
+	border-radius: 5px ;
+  	border-bottom-right-radius: 10px ;
+}
+
+.you:last-of-type {
+	border-radius: 5px ;
+  	border-bottom-left-radius: 10px ;
+}
+
+.you + .me{
+	border-radius: 5px ;
+	border-top-right-radius: 10px ;
+}
+
+.me + .you {
+	border-radius: 5px ;
+	border-top-left-radius: 10px ;
+}
+
+.me + .me{
+	border-radius: 5px ;
+  	
+}
+
+.you + .you{
+	border-radius: 5px ;
+}
+
+#chat > .me:first-child{
+	border-radius: 5px ;
+	border-top-right-radius: 10px ;
+}
+
+#chat > .me:last-child{
+	border-bottom-right-radius: 10px ;
+}
+
+#chat > .you:first-child{
+	border-radius: 5px;
+	border-top-left-radius: 10px ;
+}
+
+#chat > .you:last-child{
+	border-bottom-left-radius: 10px ;
+}
 
 main footer{
-	height:155px;
+	height:10%;
 	padding: 20px;
+	overflow: scroll;
+	border-top: 2px solid white;
 }
-main footer input{
+
+main footer form {
+	display: flex;
+}
+
+main footer .text{
+	text-align: left;
 	resize:none;
 	border:none;
-	display:block;
 	width:90%;
 	float: left;
 	height:55px;
@@ -475,29 +678,39 @@ main footer input{
 	font-size:18px;
 	margin-bottom:13px;
 }
-main footer input::placeholder{
+main footer input .text::placeholder{
 	color:rgb(146, 146, 146);
 }
 
 main footer button{
-	background-color: rgba(255, 255, 255, 0.404);
-	border: 0;
+	background-color: transparent;
+	border: 1px solid black;
+	color: white;
 	border-radius: 3px;
 	vertical-align:middle;
 	margin-top:5px;
 	float: right;
 	padding: 0;
 	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	margin-left: 2%;
+}
+
+#custom-text{
+	margin-left: 10px;
+	font-family: sans-serif;
+	font-size: 18px;
+	color: white;
 }
 
 main footer button:focus{
-	background-color: rgba(199, 199, 199, 0.856);
+	color: rgb(201, 201, 201);
 }
 
-main footer img{
-	width: 40px;
-	height: 40px;
-	padding: 0;
+main footer button:hover{
+	background-color: rgba(78, 78, 78, 0.171);
+	color: rgb(201, 201, 201);
 }
 
 .burger-button{
@@ -505,6 +718,10 @@ main footer img{
 }
 
 @media screen and (max-width: 700px) {
+
+	.third{
+		display: none;
+	}
 
 	header{
 		width: 100%;
@@ -521,14 +738,15 @@ main footer img{
 		width: 80%;
 		z-index: 99;
 		opacity: 1;
+		background-color: #333946;
 	}
 
 	main{
 		position: absolute;
 		top: 0;
 		left: 0;
-		
 		width: 100%;
+		margin-left: 0.5%;
 	}
 
 	.close{
@@ -569,7 +787,7 @@ main footer img{
     }
 
     .burger-bar {
-        background-color: #444;
+        background-color: #fff;
         position: absolute;
         top: 50%;
         right: 6px;
@@ -635,6 +853,7 @@ main footer img{
 	}
 
 	main header h2{
+		margin-left: 5%;
 		font-size: 20px;
 	}
 
@@ -658,6 +877,10 @@ main footer img{
 		height: 100%;
 	}
 
+	main footer{
+		height: 20%;
+	}
+
 	main footer input{
 		width: 80%;
 		height: 60px;
@@ -670,6 +893,10 @@ main footer img{
 
 	#chat .message {
 		padding: 8px 20px;
+	}
+
+	#chat .image{
+		max-width: 70%;
 	}
 }
 

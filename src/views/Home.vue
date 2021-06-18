@@ -4,7 +4,7 @@
     <div class="items">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <router-link to="/about">ABOUT</router-link>
+                <router-link to="about">ABOUT</router-link>
             </li>
             <li v-if="user" class="nav-item">
                 <a @click=" $store.dispatch('logout') " >LOGOUT</a>
@@ -20,14 +20,15 @@
 <style scoped >
 
 .box {
-    width: 40vw;
+    width: 30%;
     height: auto;
     margin: auto;
     margin-top: 20vh;
-    border: 5px solid black;
+    border: 3px solid #434C5E;
     border-radius: 20px;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: #3b4252c2;
+    color: white;
 }
 
 .nav-item {
@@ -41,7 +42,7 @@
 
 a{
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 a:hover{
@@ -53,6 +54,7 @@ a:hover{
     text-align: center;
     font-family: Luckiest Guy, cursive;
     font-size: 60px;
+    font-weight: 300;
 }
 
 ul {
