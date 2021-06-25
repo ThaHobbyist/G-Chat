@@ -4,12 +4,9 @@
     <div class="items">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <router-link to="about">ABOUT</router-link>
+                <router-link to="/about">ABOUT</router-link>
             </li>
-            <li v-if="user" class="nav-item">
-                <a @click=" $store.dispatch('logout') " >LOGOUT</a>
-            </li>
-            <li v-else class="nav-item">
+            <li class="nav-item">
                 <a @click=" $store.dispatch('login') ">LOGIN</a>
             </li>
         </ul>

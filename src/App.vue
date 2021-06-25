@@ -9,14 +9,10 @@ import { mapState } from 'vuex'
 
 export default {
    computed: mapState(['user']),
-    created() {
+    mounted() {
         this.$store.watch((newValue, oldValue) => {
-            console.log(newValue)
-            if ( newValue.user != null){
+            if ( newValue.user !== null){
                 this.$router.push({ name: 'Dashboard' })
-            }
-            else {
-                this.$router.push({ name: 'Home' })
             }
         })
     },

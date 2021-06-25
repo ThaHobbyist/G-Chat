@@ -6,7 +6,7 @@
 		<div class="user">
 			<div class="img"><img :src= user.photoURL alt=""></div>
 			<div class="heading"><h2> {{ user.displayName }} </h2>
-			<button class="logout" @click="$store.dispatch('logout')"><i class="fa fa-sign-out" aria-hidden="true"></i></button></div>
+			<button class="logout" @click="logout"><i class="fa fa-sign-out" aria-hidden="true"></i></button></div>
 			
 		</div>
 		<hr class="break">
@@ -48,7 +48,7 @@
 				<h2>{{ s_usr.displayName }}</h2>
 			</div>
 		</header>
-		<div class="messages" >
+		<div class="messages" id="chat-container" >
 			<ul id="chat" ref="scrollable">
 				<li v-for="(msg, index) in messages" :key="'index-'+index" :class="sentOrRecieved(msg.sender, msg.reciever)" >
 					<h3 v-if="msg.text">{{ msg.text }}</h3>
@@ -80,11 +80,15 @@
 		</header>
 		<h2>Select an User to chat with!</h2>
 	</main>
-	<div class="right">
+	<div class="right" v-if="s_usr.length !== 0" >
 		<h1>About User</h1>
 		<img :src= s_usr.photoURL alt="" class="image">
 		<h2> {{s_usr.displayName}} </h2>
 		<h3> {{s_usr.email}} </h3>
+	</div>
+	<div class="right" v-else >
+		<h1>About User</h1>
+		<h2>No user selected yet</h2>
 	</div>
 </div>
 </template>
@@ -148,7 +152,9 @@ export default {
 			await this.db.collection('messages').add(messageInfo)
 
 			this.message = ''
-			this.$refs['scrollable'].scrollIntoView({ behaviour: 'smooth'})
+
+			const container = this.$el.querySelector("#chat")
+      		container.scrollTop = container.scrollHeight
 			
         },
         sentOrRecieved(senderID, recieverID) {
@@ -225,7 +231,11 @@ export default {
 			this.imageName = ""
 			this.imageFile = ""
 			this.imageUrl = ""
-		} 
+		},
+		async logout() {
+			this.$store.dispatch('logout').then(this.$router.push({ name: 'Home' }))
+			
+		}
     },
   }
 </script>

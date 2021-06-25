@@ -12,25 +12,29 @@
 
 <style scoped>
 .about {
-  width: 40vw;
-  height: auto;
-  margin: auto;
-  margin-top: 20vh;
-  border: 5px solid black;
-  border-radius: 20px;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.4);
+   width: 30%;
+    height: auto;
+    margin: auto;
+    margin-top: 20vh;
+    border: 3px solid #434C5E;
+    border-radius: 20px;
+    text-align: center;
+    background-color: #3b4252c2;
+    color: white;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 h1{
   text-align: center;
   font-family: Luckiest Guy, cursive;
   font-size: 60px;
+  font-weight: 300;
   margin-bottom: 0;
 }
 
 p{
-  font-family: Slackey, cursive;
+  font-family: Rowdies, cursive;
 }
 
 h4{
@@ -40,7 +44,7 @@ h4{
 
 a{
   text-decoration: none;
-  color: black;
+  color: white;
   display: block;
   margin-bottom: 1em;
   font-size: 17px;
@@ -48,12 +52,12 @@ a{
 
 a:hover{
   font-size: 20px;
-  color: grey;
+  color: rgb(141, 141, 141);
 }
 
 .links {
   margin-top: 3em;
-  font-family: Slackey, cursive;
+  font-family: Rowdies, cursive;
 }
 
 @media screen and (max-width: 540px) {
